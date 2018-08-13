@@ -108,3 +108,31 @@ export function createTranscode({
     ...props,
   });
 }
+
+export function createExport({
+  itemId = isRequired(),
+  queryParams,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/export`;
+  return vFetch({
+    path,
+    method: 'POST',
+    queryParams,
+    ...props,
+  });
+}
+
+export function createExportImp({
+  itemId = isRequired(),
+  queryParams,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/export/imp`;
+  return vFetch({
+    path,
+    method: 'POST',
+    queryParams,
+    ...props,
+  });
+}

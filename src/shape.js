@@ -77,3 +77,33 @@ export function createShapeTranscode({
     ...props,
   });
 }
+
+export function createShapeExport({
+  itemId,
+  shapeId,
+  queryParams,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/${shapeId}/export`;
+  return vFetch({
+    path,
+    method: 'POST',
+    queryParams,
+    ...props,
+  });
+}
+
+export function createShapeExportImp({
+  itemId,
+  shapeId,
+  queryParams,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/${shapeId}/export/imp`;
+  return vFetch({
+    path,
+    method: 'POST',
+    queryParams,
+    ...props,
+  });
+}
