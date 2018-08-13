@@ -1,0 +1,16 @@
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules
+
+# lock file
+yarn.lock
+
+# project files
+src
+.eslintrc
+.babelrc
+.gitignore

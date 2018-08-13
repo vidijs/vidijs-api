@@ -1,0 +1,39 @@
+{
+  "name": "@vidijs/vidijs-api",
+  "version": "0.0.1",
+  "description": "Vidispine API bindings",
+  "author": "Alex Jennings",
+  "license": "MIT",
+  "repository": "vidijs/vidijs-api",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "keywords": [
+    "vidispine"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w"
+  },
+  "peerDependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.1.4",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "rollup": "^0.62.0",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0"
+  },
+  "files": [
+    "dist"
+  ]
+}
