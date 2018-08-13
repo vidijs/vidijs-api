@@ -1,6 +1,6 @@
 {
   "name": "@vidijs/vidijs-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Vidispine API bindings",
   "author": "Alex Jennings",
   "license": "MIT",
