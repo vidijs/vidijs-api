@@ -1,4 +1,5 @@
 import { vFetch } from './utils';
+import { listNotification } from './notification';
 
 export function listJob({
   matrixParams = [],
@@ -10,7 +11,6 @@ export function listJob({
     path,
     queryParams,
     matrixParams,
-    ...props,
     ...props,
   });
 }
@@ -92,6 +92,17 @@ export function deleteJob({
     path,
     method: 'DELETE',
     queryParams,
+    ...props,
+  });
+}
+
+
+export function listJobNotification({
+  ...props
+} = {}) {
+  const entityType = 'job';
+  return listNotification({
+    entityType,
     ...props,
   });
 }

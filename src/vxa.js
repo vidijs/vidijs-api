@@ -15,10 +15,12 @@ export function createVxa({
   ...props
 } = {}) {
   const path = '/API/vxa/enable-ssh/';
+  const headers = { accept: 'text/plain' };
   return vFetch({
     path,
     method: 'PUT',
     queryParams,
+    headers,
     ...props,
   });
 }

@@ -27,6 +27,15 @@ function setDefaultHeaders({
 }
 
 
+const KV_PARAMS = [
+  'jobmetadata',
+  'jobMetadata',
+  'notificationdata',
+  'notificationData',
+  'methodMetadata',
+];
+
+
 function setQueryParams(queryParams) {
   const paramKeys = Object.keys(queryParams);
   if (paramKeys.length === 0) return '';
@@ -36,11 +45,10 @@ function setQueryParams(queryParams) {
       return accumulator;
     }
     const separator = currentIndex > 0 ? '&' : '';
-    if (currentKey === 'jobmetadata') {
-      const { jobmetadata } = queryParams;
-      const jobmetadataReducer = (a, c, i) => `${a}${i > 0 ? '&' : ''}jobmetadata=${c.key}%3D${c.value}`;
-      const jobmetadataValue = jobmetadata.reduce(jobmetadataReducer, '');
-      return `${accumulator}${separator}${jobmetadataValue}`;
+    if (KV_PARAMS.includes(currentKey)) {
+      const kvReducer = (a, c, i) => `${a}${i > 0 ? '&' : ''}${currentKey}=${c.key}%3D${c.value}`;
+      const kvString = queryParams[currentKey].reduce(kvReducer, '');
+      return `${accumulator}${separator}${kvString}`;
     }
     return `${accumulator}${separator}${currentKey}=${queryParams[currentKey]}`;
   };
@@ -50,7 +58,20 @@ function setQueryParams(queryParams) {
 
 function setMatrix(matrix) {
   if (matrix.length === 0) return '';
-  const reducer = (accumulator, currentMx) => `${accumulator};${Object.keys(currentMx)[0]}=${Object.values(currentMx)[0]}`;
+  const reducer = (a, c) => {
+    let matrixKey;
+    let matrixValue;
+    if (Array.isArray(c)) {
+      [matrixKey, matrixValue] = c;
+    } else {
+      [matrixKey] = Object.keys(c);
+      [matrixValue] = Object.values(c);
+    }
+    if (matrixValue === '' || matrixValue === undefined) {
+      return a;
+    }
+    return `${a};${matrixKey}=${encodeURIComponent(matrixValue)}`;
+  };
   const matrixStr = matrix.reduce(reducer, '');
   return matrixStr;
 }
@@ -83,7 +104,7 @@ export function vFetch({
   return new Promise((resolve, reject) => {
     axios(request)
       .then((response) => {
-        response.ok = (response.statusText === 'OK');
+        response.ok = (response.status >= 100 && response.status <= 399);
         response.json = () => response.data;
         response.text = () => response.data;
         resolve(response);

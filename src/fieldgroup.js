@@ -1,4 +1,5 @@
 import { vFetch } from './utils';
+import { getSimpleMetadata as getEntitySimpleMetadata } from './metadata';
 
 export function listFieldGroup({
   queryParams,
@@ -27,11 +28,11 @@ export function getFieldGroup({
 
 export function updateFieldGroup({
   groupName,
-  fieldGroupDocument,
+  metadataFieldGroupDocument,
   queryParams,
   ...props
 }) {
-  const body = JSON.stringify(fieldGroupDocument);
+  const body = JSON.stringify(metadataFieldGroupDocument);
   const path = `/API/metadata-field/field-group/${groupName}`;
   return vFetch({
     path,
@@ -120,6 +121,18 @@ export function searchFieldGroup({
     method: 'PUT',
     queryParams,
     matrixParams,
+    ...props,
+  });
+}
+
+export function getSimpleMetadata({
+  groupName,
+  ...props
+}) {
+  const entityType = 'metadata-field/field-group';
+  return getEntitySimpleMetadata({
+    entityType,
+    entityId: groupName,
     ...props,
   });
 }

@@ -273,17 +273,3 @@ export function updateFolderCollection({
     ...props,
   });
 }
-
-export function createCollectionExport({
-  collectionId,
-  queryParams,
-  ...props
-}) {
-  const path = `/API/collection/${collectionId}/export`;
-  return vFetch({
-    path,
-    method: 'POST',
-    queryParams,
-    ...props,
-  });
-}

@@ -113,14 +113,14 @@ export function getUserRealName({
 
 export function updateUserRealName({
   userName,
-  realname,
+  realName,
   ...props
 }) {
   const headers = { accept: 'text/plain', contentType: 'text/plain' };
   const path = `/API/user/${userName}/realname`;
   return vFetch({
     path,
-    body: realname,
+    body: realName,
     method: 'PUT',
     headers,
     ...props,
@@ -239,6 +239,21 @@ export function updateUserGroup({
     body,
     method: 'PUT',
     queryParams,
+    ...props,
+  });
+}
+
+export function getToken({
+  userName,
+  queryParams,
+  ...props
+}) {
+  const path = `/API/user/${userName}/token`;
+  const headers = { accept: 'text/plain' };
+  return vFetch({
+    path,
+    queryParams,
+    headers,
     ...props,
   });
 }

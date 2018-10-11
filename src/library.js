@@ -167,17 +167,3 @@ export function getLibraryBatch({
     ...props,
   });
 }
-
-export function createLibraryExport({
-  libraryId,
-  queryParams,
-  ...props
-}) {
-  const path = `/API/library/${libraryId}/export`;
-  return vFetch({
-    path,
-    method: 'POST',
-    queryParams,
-    ...props,
-  });
-}

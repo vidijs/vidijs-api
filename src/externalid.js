@@ -1,6 +1,13 @@
 import { vFetch } from './utils';
 
-export function listExternalIdName({
+function getEntityTypeUrl(entityType) {
+  if (entityType === 'field-group') {
+    return 'metadata-field/field-group';
+  }
+  return entityType;
+}
+
+export function listExternalIdNamespace({
   ...props
 } = {}) {
   const path = '/API/external-id';
@@ -10,7 +17,7 @@ export function listExternalIdName({
   });
 }
 
-export function getExternalIdName({
+export function getExternalIdNamespace({
   idName,
   ...props
 }) {
@@ -21,12 +28,12 @@ export function getExternalIdName({
   });
 }
 
-export function updateExternalIdName({
+export function updateExternalIdNamespace({
   idName,
-  externalIdNameDocument,
+  externalIdentifierNamespaceDocument,
   ...props
 }) {
-  const body = JSON.stringify(externalIdNameDocument);
+  const body = JSON.stringify(externalIdentifierNamespaceDocument);
   const path = `/API/external-id/${idName}`;
   return vFetch({
     path,
@@ -36,7 +43,7 @@ export function updateExternalIdName({
   });
 }
 
-export function removeExternalIdName({
+export function removeExternalIdNamespace({
   idName,
   ...props
 }) {
@@ -49,10 +56,11 @@ export function removeExternalIdName({
 }
 
 export function listExternalId({
-  resource,
+  entityType,
+  entityId,
   ...props
 }) {
-  const path = `/API/${resource}/external-id/`;
+  const path = `/API/${getEntityTypeUrl(entityType)}/${entityId}/external-id/`;
   return vFetch({
     path,
     ...props,
@@ -60,11 +68,12 @@ export function listExternalId({
 }
 
 export function createExternalId({
-  resource,
+  entityType,
+  entityId,
   externalId,
   ...props
 }) {
-  const path = `/API/${resource}/external-id/${externalId}`;
+  const path = `/API/${getEntityTypeUrl(entityType)}/${entityId}/external-id/${externalId}`;
   return vFetch({
     path,
     method: 'PUT',
@@ -73,11 +82,12 @@ export function createExternalId({
 }
 
 export function removeExternalId({
-  resource,
+  entityType,
+  entityId,
   externalId,
   ...props
 }) {
-  const path = `/API/${resource}/external-id/${externalId}`;
+  const path = `/API/${getEntityTypeUrl(entityType)}/${entityId}/external-id/${externalId}`;
   return vFetch({
     path,
     method: 'DELETE',
@@ -87,10 +97,11 @@ export function removeExternalId({
 
 
 export function removeAllExternalId({
-  resource,
+  entityType,
+  entityId,
   ...props
 }) {
-  const path = `/API/${resource}/external-id`;
+  const path = `/API/${getEntityTypeUrl(entityType)}/${entityId}/external-id`;
   return vFetch({
     path,
     method: 'DELETE',

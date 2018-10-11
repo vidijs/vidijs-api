@@ -44,3 +44,15 @@ export function disableService({
     ...props,
   });
 }
+
+export function getStackTrace({
+  ...props
+} = {}) {
+  const path = '/API/vidispine-service/stacktrace';
+  const headers = { accept: 'text/plain' };
+  return vFetch({
+    path,
+    headers,
+    ...props,
+  });
+}

@@ -1,4 +1,6 @@
 import { vFetch } from './utils';
+import { getSimpleMetadata as getEntitySimpleMetadata } from './metadata';
+
 
 export function listMetadataField({
   queryParams,
@@ -76,6 +78,18 @@ export function updateMetadataFieldValues({
     path,
     body,
     method: 'PUT',
+    ...props,
+  });
+}
+
+export function getSimpleMetadata({
+  fieldName,
+  ...props
+}) {
+  const entityType = 'metadata-field';
+  return getEntitySimpleMetadata({
+    entityType,
+    entityId: fieldName,
     ...props,
   });
 }

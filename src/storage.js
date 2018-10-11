@@ -156,6 +156,31 @@ export function removeStorageMethod({
   });
 }
 
+export function getStorageMethod({
+  storageId,
+  storageMethodId,
+  ...props
+}) {
+  const path = `/API/storage/${storageId}/method/${storageMethodId}`;
+  return vFetch({
+    path,
+    ...props,
+  });
+}
+
+
+export function listStorageMethod({
+  storageId,
+  storageMethodId,
+  ...props
+}) {
+  const path = `/API/storage/${storageId}/method/`;
+  return vFetch({
+    path,
+    ...props,
+  });
+}
+
 export function removeStorage({
   storageId,
   queryParams,

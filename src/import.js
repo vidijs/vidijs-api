@@ -19,17 +19,16 @@ export function createImportUri({
 
 export function createImportRaw({
   file,
-  fileHeaders = {},
+  headers = {},
   queryParams,
   ...props
 }) {
-  const headers = { contentType: 'application/octet-stream', ...fileHeaders };
   const path = '/API/import/raw/';
   return vFetch({
     path,
     body: file,
     method: 'POST',
-    headers,
+    headers: { contentType: 'application/octet-stream', ...headers },
     queryParams,
     ...props,
   });
@@ -37,17 +36,16 @@ export function createImportRaw({
 
 export function createImportRawNoAuth({
   file,
-  fileHeaders = {},
+  headers = {},
   queryParams,
   ...props
 }) {
-  const headers = { contentType: 'application/octet-stream', ...fileHeaders };
   const path = '/APInoauth/import/raw/';
   return vFetch({
     path,
     body: file,
     method: 'POST',
-    headers,
+    headers: { contentType: 'application/octet-stream', ...headers },
     queryParams,
     ...props,
   });
@@ -120,17 +118,16 @@ export function createImportComponentRaw({
   itemId,
   component,
   file,
-  fileHeaders = {},
+  headers = {},
   queryParams,
   ...props
 }) {
-  const headers = { contentType: 'application/octet-stream', ...fileHeaders };
   const path = `/API/import/placeholder/${itemId}/${component}/raw/`;
   return vFetch({
     path,
     body: file,
     method: 'POST',
-    headers,
+    headers: { contentType: 'application/octet-stream', ...headers },
     queryParams,
     ...props,
   });

@@ -25,4 +25,18 @@ export function createInit({
   });
 }
 
+
+export function getFileRaw({
+  path,
+  ...props
+}) {
+  const headers = { accept: 'application/octet-stream' };
+  return vFetch({
+    path,
+    headers,
+    responseType: 'blob',
+    ...props,
+  });
+}
+
 export default createInit;
