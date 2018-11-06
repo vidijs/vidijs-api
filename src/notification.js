@@ -4,6 +4,9 @@ function getEntityTypeUrl(entityType) {
   if (entityType === 'file') {
     return 'storage/file';
   }
+  if (['metadata', 'access'].includes(entityType)) {
+    return 'item';
+  }
   return entityType;
 }
 
