@@ -77,3 +77,35 @@ export function createShapeTranscode({
     ...props,
   });
 }
+
+export function createShapeEssenceImport({
+  itemId,
+  queryParams,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/essence`;
+  return vFetch({
+    path,
+    method: 'POST',
+    queryParams,
+    ...props,
+  });
+}
+
+export function createShapeEssenceImportRaw({
+  itemId,
+  queryParams,
+  headers = {},
+  file,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/essence/raw`;
+  return vFetch({
+    path,
+    body: file,
+    method: 'POST',
+    headers: { contentType: 'application/octet-stream', ...headers },
+    queryParams,
+    ...props,
+  });
+}

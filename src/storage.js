@@ -196,3 +196,40 @@ export function removeStorage({
     ...props,
   });
 }
+
+export function startEvacuateStorage({
+  storageId,
+  ...props
+}) {
+  const path = `/API/storage/${storageId}/evacuate`;
+  return vFetch({
+    path,
+    method: 'PUT',
+    ...props,
+  });
+}
+
+export function cancelEvacuateStorage({
+  storageId,
+  ...props
+}) {
+  const path = `/API/storage/${storageId}/evacuate`;
+  return vFetch({
+    path,
+    method: 'DELETE',
+    ...props,
+  });
+}
+
+export function updateStorageType({
+  storageId,
+  storageType,
+  ...props
+}) {
+  const path = `/API/storage/${storageId}/type/${storageType}`;
+  return vFetch({
+    path,
+    method: 'PUT',
+    ...props,
+  });
+}
