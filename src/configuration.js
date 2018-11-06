@@ -259,3 +259,27 @@ export function removeDatabasePurgingConfiguration({
     ...props,
   });
 }
+
+export function getCorsConfiguration({
+  ...props
+} = {}) {
+  const path = '/API/configuration/cors';
+  return vFetch({
+    path,
+    ...props,
+  });
+}
+
+export function updateCorsConfiguration({
+  corsConfigurationDocument,
+  ...props
+}) {
+  const body = JSON.stringify(corsConfigurationDocument);
+  const path = '/API/configuration/cors';
+  return vFetch({
+    path,
+    method: 'PUT',
+    body,
+    ...props,
+  });
+}
