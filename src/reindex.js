@@ -11,7 +11,7 @@ export function getReindex({
   });
 }
 
-export function createReindex({
+export function updateReindex({
   indexName,
   queryParams,
   ...props
