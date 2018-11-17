@@ -1,6 +1,5 @@
-import * as audit from './audit';
+import * as auditlog from './auditlog';
 import * as collection from './collection';
-import * as configurationproperties from './configurationproperties';
 import * as debug from './debug';
 import * as errorlog from './errorlog';
 import * as exportlocation from './exportlocation';
@@ -30,15 +29,16 @@ import * as version from './version';
 import * as vsimport from './import';
 import * as vxa from './vxa';
 import * as library from './library';
-import * as jobpool from './jobpool';
-import * as pathalias from './pathalias';
+import * as configuration from './configuration';
 import * as documentmetadata from './documentmetadata';
 import * as conform from './conform';
 import * as projection from './projection';
+import * as access from './access';
+import * as importsettings from './importsettings';
+import * as taskgroup from './taskgroup';
 
 export {
-  audit,
-  configurationproperties,
+  auditlog,
   debug,
   javascript,
   noauth,
@@ -69,9 +69,11 @@ export {
   vxa,
   shape,
   library,
-  jobpool,
-  pathalias,
+  configuration,
   documentmetadata,
   conform,
   projection,
+  access,
+  importsettings,
+  taskgroup,
 };

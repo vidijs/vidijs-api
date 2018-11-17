@@ -1,5 +1,16 @@
 import axios from 'axios';
 
+export { axios as defaultClient };
+
+export function clientLogin({ baseUrl, token }) {
+  if (baseUrl) { axios.defaults.baseURL = baseUrl; }
+  if (token) { axios.defaults.headers.Authorization = `token ${token}`; }
+}
+
+export function clientLogout() {
+  delete axios.defaults.headers.Authorization;
+}
+
 function btoa(str) {
   const buffer = (str instanceof Buffer) ? str : Buffer.from(str.toString(), 'binary');
   return buffer.toString('base64');

@@ -14,12 +14,12 @@ export function listItemCollection({
 }
 
 export function searchItemCollection({
-  searchDocument,
+  itemSearchDocument,
   matrixParams = [],
   queryParams,
   ...props
 }) {
-  const body = JSON.stringify(searchDocument);
+  const body = JSON.stringify(itemSearchDocument);
   return vFetch({
     path: '/API/search/',
     method: 'PUT',
@@ -31,12 +31,12 @@ export function searchItemCollection({
 }
 
 export function searchShape({
-  searchDocument,
+  shapeSearchDocument,
   matrixParams = [],
   queryParams,
   ...props
 }) {
-  const body = JSON.stringify(searchDocument);
+  const body = JSON.stringify(shapeSearchDocument);
   return vFetch({
     path: '/API/search/shape/',
     method: 'PUT',
@@ -48,12 +48,12 @@ export function searchShape({
 }
 
 export function searchFile({
-  searchDocument,
+  fileSearchDocument,
   matrixParams = [],
   queryParams,
   ...props
 }) {
-  const body = JSON.stringify(searchDocument);
+  const body = JSON.stringify(fileSearchDocument);
   return vFetch({
     path: '/API/search/file/',
     method: 'PUT',
@@ -65,10 +65,10 @@ export function searchFile({
 }
 
 export function searchAutoComplete({
-  autocompleteDocument,
+  autocompleteRequestDocument,
   ...props
 }) {
-  const body = JSON.stringify(autocompleteDocument);
+  const body = JSON.stringify(autocompleteRequestDocument);
   return vFetch({
     path: '/API/search/autocomplete/',
     method: 'PUT',

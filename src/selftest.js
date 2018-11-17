@@ -1,10 +1,11 @@
 import { vFetch } from './utils';
 
 export function listSelfTest({
+  noAuth = false,
   queryParams,
   ...props
 } = {}) {
-  const path = '/API/selftest/';
+  const path = noAuth ? '/APInoauth/selftest/' : '/API/selftest/';
   return vFetch({
     path,
     queryParams,
@@ -12,4 +13,13 @@ export function listSelfTest({
   });
 }
 
-export default listSelfTest;
+export function getSelfTest({
+  testName,
+  ...props
+} = {}) {
+  const path = `/API/selftest/${testName}`;
+  return vFetch({
+    path,
+    ...props,
+  });
+}

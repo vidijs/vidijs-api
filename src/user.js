@@ -246,10 +246,11 @@ export function updateUserGroup({
 export function getToken({
   userName,
   queryParams,
+  headers: propsHeaders = {},
   ...props
 }) {
   const path = `/API/user/${userName}/token`;
-  const headers = { accept: 'text/plain' };
+  const headers = { ...propsHeaders, accept: 'text/plain' };
   return vFetch({
     path,
     queryParams,

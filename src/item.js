@@ -31,6 +31,20 @@ export function getItem({
   });
 }
 
+export function getItemUri({
+  itemId = isRequired(),
+  queryParams,
+  ...props
+} = {}) {
+  const path = `/API/item/${itemId}/uri`;
+  return vFetch({
+    path,
+    method: 'GET',
+    queryParams,
+    ...props,
+  });
+}
+
 export function removeItem({
   itemId = isRequired(),
   queryParams,
@@ -46,12 +60,12 @@ export function removeItem({
 }
 
 export function searchItem({
-  searchDocument,
+  itemSearchDocument,
   matrixParams = [],
   queryParams,
   ...props
 } = {}) {
-  const body = JSON.stringify(searchDocument);
+  const body = JSON.stringify(itemSearchDocument);
   return vFetch({
     path: '/API/item/',
     method: 'PUT',

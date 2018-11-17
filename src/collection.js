@@ -1,5 +1,7 @@
 import { vFetch } from './utils';
 
+import * as metadataApi from './metadata';
+
 export function listCollection({
   matrixParams = [],
   queryParams,
@@ -38,6 +40,23 @@ export function getCollectionMetadata({
     path,
     queryParams,
     matrixParams,
+    ...props,
+  });
+}
+
+export function updateCollectionMetadata({
+  collectionId,
+  metadataDocument,
+  matrixParams = [],
+  queryParams,
+  ...props
+}) {
+  return metadataApi.updateEntityMetadata({
+    entity: 'collection',
+    entityId: collectionId,
+    metadataDocument,
+    matrixParams,
+    queryParams,
     ...props,
   });
 }
@@ -83,12 +102,12 @@ export function getCollectionItem({
 }
 
 export function searchCollection({
-  searchDocument,
+  itemSearchDocument,
   matrixParams = [],
   queryParams,
   ...props
 }) {
-  const body = JSON.stringify(searchDocument);
+  const body = JSON.stringify(itemSearchDocument);
   return vFetch({
     path: '/API/collection/',
     method: 'PUT',

@@ -108,12 +108,12 @@ export function removeFieldGroupChild({
 }
 
 export function searchFieldGroup({
-  searchDocument,
+  metadataFieldGroupSearchDocument,
   matrixParams = [],
   queryParams,
   ...props
 }) {
-  const body = JSON.stringify(searchDocument);
+  const body = JSON.stringify(metadataFieldGroupSearchDocument);
   const path = '/API/metadata-field/field-group/';
   return vFetch({
     path,
