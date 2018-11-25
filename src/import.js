@@ -133,6 +133,25 @@ export function createImportComponentRaw({
   });
 }
 
+export function createImportComponentRawNoAuth({
+  itemId,
+  component,
+  file,
+  headers = {},
+  queryParams,
+  ...props
+}) {
+  const path = `/APInoauth/import/placeholder/${itemId}/${component}/raw/`;
+  return vFetch({
+    path,
+    body: file,
+    method: 'POST',
+    headers: { contentType: 'application/octet-stream', ...headers },
+    queryParams,
+    ...props,
+  });
+}
+
 export function createImportItem({
   itemId,
   placeholderImportRequestDocument,

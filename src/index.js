@@ -1,4 +1,5 @@
 import * as auditlog from './auditlog';
+import * as autoimport from './autoimport';
 import * as collection from './collection';
 import * as debug from './debug';
 import * as errorlog from './errorlog';
@@ -36,9 +37,16 @@ import * as projection from './projection';
 import * as access from './access';
 import * as importsettings from './importsettings';
 import * as taskgroup from './taskgroup';
+import * as notification from './notification';
+import * as storagegroup from './storagegroup';
+import * as utils from './utils';
+import * as metadata from './metadata';
+import * as quota from './quota';
+import * as transfer from './transfer';
 
 export {
   auditlog,
+  autoimport,
   debug,
   javascript,
   noauth,
@@ -76,4 +84,10 @@ export {
   access,
   importsettings,
   taskgroup,
+  notification,
+  storagegroup,
+  utils,
+  metadata,
+  quota,
+  transfer,
 };
