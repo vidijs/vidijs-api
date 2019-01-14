@@ -59,6 +59,19 @@ export function removeItem({
   });
 }
 
+export function removeItemList({
+  queryParams,
+  ...props
+} = {}) {
+  const path = '/API/item/';
+  return vFetch({
+    path,
+    method: 'DELETE',
+    queryParams,
+    ...props,
+  });
+}
+
 export function searchItem({
   itemSearchDocument,
   matrixParams = [],
