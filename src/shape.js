@@ -1,4 +1,4 @@
-import { vFetch } from './utils';
+import { vFetch, isRequired } from './utils';
 
 export function createShapePlaceholder({
   itemId,
@@ -105,6 +105,36 @@ export function createShapeEssenceImportRaw({
     body: file,
     method: 'POST',
     headers: { contentType: 'application/octet-stream', ...headers },
+    queryParams,
+    ...props,
+  });
+}
+
+export function removeShape({
+  itemId = isRequired(),
+  shapeId = isRequired(),
+  queryParams,
+  ...props
+} = {}) {
+  const path = `/API/item/${itemId}/shape/${shapeId}`;
+  return vFetch({
+    path,
+    method: 'DELETE',
+    queryParams,
+    ...props,
+  });
+}
+
+export function createTranscode({
+  itemId = isRequired(),
+  shapeId = isRequired(),
+  queryParams,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/${shapeId}/transcode`;
+  return vFetch({
+    path,
+    method: 'POST',
     queryParams,
     ...props,
   });
