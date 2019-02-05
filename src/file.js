@@ -129,6 +129,23 @@ export function createFileImportAssetMap({
   });
 }
 
+export function createFilePathImportAssetMap({
+  storageId,
+  metadataDocument,
+  queryParams,
+  ...props
+}) {
+  const body = JSON.stringify(metadataDocument);
+  const path = `/API/storage/${storageId}/file/import/assetmap`;
+  return vFetch({
+    path,
+    body,
+    method: 'POST',
+    queryParams,
+    ...props,
+  });
+}
+
 export function createFileImportPath({
   storageId,
   metadataDocument,
