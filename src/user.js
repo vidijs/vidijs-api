@@ -258,3 +258,69 @@ export function getToken({
     ...props,
   });
 }
+
+export function listKey({
+  userName,
+  ...props
+}) {
+  const path = `/API/user/${userName}/key`;
+  return vFetch({
+    path,
+    ...props,
+  });
+}
+
+export function getKey({
+  userName,
+  keyId,
+  ...props
+}) {
+  const path = `/API/user/${userName}/key/${keyId}`;
+  return vFetch({
+    path,
+    ...props,
+  });
+}
+
+export function createKey({
+  userName,
+  queryParams,
+  ...props
+}) {
+  const path = `/API/user/${userName}/key/`;
+  return vFetch({
+    path,
+    queryParams,
+    method: 'POST',
+    ...props,
+  });
+}
+
+export function updateKey({
+  userName,
+  keyId,
+  accessKeyDocument,
+  ...props
+}) {
+  const path = `/API/user/${userName}/key/${keyId}`;
+  const body = JSON.stringify(accessKeyDocument);
+  return vFetch({
+    path,
+    body,
+    method: 'PUT',
+    ...props,
+  });
+}
+
+export function removeKey({
+  userName,
+  keyId,
+  ...props
+}) {
+  const path = `/API/user/${userName}/key/${keyId}`;
+  return vFetch({
+    path,
+    method: 'DELETE',
+    ...props,
+  });
+}
