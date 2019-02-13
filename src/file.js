@@ -5,7 +5,7 @@ export function listFile({
   matrixParams = [],
   queryParams,
   ...props
-}) {
+} = {}) {
   const path = storageId ? `/API/storage/${storageId}/file/` : '/API/storage/file/';
   return vFetch({
     path,
@@ -20,7 +20,7 @@ export function listFileImportable({
   matrixParams = [],
   queryParams,
   ...props
-}) {
+} = {}) {
   const path = storageId ? `/API/storage/${storageId}/file/importable/` : '/API/storage/file/importable/';
   return vFetch({
     path,
