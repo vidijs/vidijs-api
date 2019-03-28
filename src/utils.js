@@ -68,7 +68,11 @@ function setQueryParams(queryParams) {
 }
 
 function setMatrix(matrix) {
-  if (matrix.length === 0) return '';
+  let matrixList = matrix;
+  if (!Array.isArray(matrix)) {
+    matrixList = Object.entries({ matrix });
+  }
+  if (matrixList.length === 0) return '';
   const reducer = (a, c) => {
     let matrixKey;
     let matrixValue;
@@ -83,7 +87,7 @@ function setMatrix(matrix) {
     }
     return `${a};${matrixKey}=${encodeURIComponent(matrixValue)}`;
   };
-  const matrixStr = matrix.reduce(reducer, '');
+  const matrixStr = matrixList.reduce(reducer, '');
   return matrixStr;
 }
 
