@@ -70,7 +70,7 @@ function setQueryParams(queryParams) {
 function setMatrix(matrix) {
   let matrixList = matrix;
   if (!Array.isArray(matrix)) {
-    matrixList = Object.entries({ matrix });
+    matrixList = Object.entries(matrix);
   }
   if (matrixList.length === 0) return '';
   const reducer = (a, c) => {
