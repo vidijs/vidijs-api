@@ -97,6 +97,29 @@ export function searchUser({
   });
 }
 
+export function createAlias({
+  userName,
+  alias,
+  ...props}) {
+  const path = `/API/user/${userName}/alias/${alias}`;
+  return vFetch({
+    path,
+    method:'PUT',
+    ...props,
+  });
+}
+
+export function removeAlias({
+  userName,
+  alias,
+  ...props}) {
+  const path = `/API/user/${userName}/alias/${alias}`;
+  return vFetch({
+    path,
+    method:'DELETE',
+    ...props,
+  });
+}
 
 export function getUserRealName({
   userName,
