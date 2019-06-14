@@ -1,5 +1,18 @@
 import { vFetch } from './utils';
 
+export function whoAmI({
+  headers: propsHeaders = {},
+  ...props
+} = {}) {
+  const path = '/API/whoami';
+  const headers = { accept: 'text/plain', ...propsHeaders };
+  return vFetch({
+    path,
+    headers,
+    ...props,
+  });
+}
+
 export function getUserToken({
   username,
   password,
@@ -100,11 +113,12 @@ export function searchUser({
 export function createAlias({
   userName,
   alias,
-  ...props}) {
+  ...props
+}) {
   const path = `/API/user/${userName}/alias/${alias}`;
   return vFetch({
     path,
-    method:'PUT',
+    method: 'PUT',
     ...props,
   });
 }
@@ -112,11 +126,12 @@ export function createAlias({
 export function removeAlias({
   userName,
   alias,
-  ...props}) {
+  ...props
+}) {
   const path = `/API/user/${userName}/alias/${alias}`;
   return vFetch({
     path,
-    method:'DELETE',
+    method: 'DELETE',
     ...props,
   });
 }
@@ -267,13 +282,12 @@ export function updateUserGroup({
 }
 
 export function getToken({
-  userName,
   queryParams,
   headers: propsHeaders = {},
   ...props
-}) {
-  const path = `/API/user/${userName}/token`;
-  const headers = { ...propsHeaders, accept: 'text/plain' };
+} = {}) {
+  const path = '/API/token';
+  const headers = { accept: 'text/plain', ...propsHeaders };
   return vFetch({
     path,
     queryParams,
