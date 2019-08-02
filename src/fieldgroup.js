@@ -1,4 +1,4 @@
-import { vFetch } from './utils';
+import { vFetch, isRequired } from './utils';
 import { getSimpleMetadata as getEntitySimpleMetadata } from './metadata';
 
 export function listFieldGroup({
@@ -133,6 +133,72 @@ export function getSimpleMetadata({
   return getEntitySimpleMetadata({
     entityType,
     entityId: groupName,
+    ...props,
+  });
+}
+
+export function listFieldGroupAccess({
+  groupName = isRequired(),
+  ...props
+}) {
+  const path = `/API/metadata-field/field-group/${groupName}/access`;
+  return vFetch({
+    path,
+    method: 'GET',
+    ...props,
+  });
+}
+
+export function createFieldGroupAccess({
+  groupName = isRequired(),
+  metadataFieldAccessControlDocument = isRequired(),
+  ...props
+}) {
+  const path = `/API/metadata-field/field-group/${groupName}/access`;
+  return vFetch({
+    path,
+    method: 'POST',
+    body: metadataFieldAccessControlDocument,
+    ...props,
+  });
+}
+
+export function removeFieldGroupAccess({
+  groupName = isRequired(),
+  accessId = isRequired(),
+  ...props
+}) {
+  const path = `/API/metadata-field/field-group/${groupName}/access/${accessId}`;
+  return vFetch({
+    path,
+    method: 'DELETE',
+    ...props,
+  });
+}
+
+export function listFieldGroupMergedAccess({
+  queryParams,
+  ...props
+} = {}) {
+  const path = '/API/metadata-field/field-group/merged-access';
+  return vFetch({
+    path,
+    method: 'GET',
+    queryParams,
+    ...props,
+  });
+}
+
+export function getFieldGroupMergedAccess({
+  groupName = isRequired(),
+  queryParams,
+  ...props
+} = {}) {
+  const path = `/API/metadata-field/field-group/${groupName}/merged-access`;
+  return vFetch({
+    path,
+    method: 'GET',
+    queryParams,
     ...props,
   });
 }

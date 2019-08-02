@@ -43,6 +43,21 @@ import * as utils from './utils';
 import * as metadata from './metadata';
 import * as quota from './quota';
 import * as transfer from './transfer';
+import * as component from './component';
+import * as autoprojection from './autoprojection';
+import * as bulkymetadata from './bulkymetadata';
+import * as deletionlock from './deletionlock';
+import * as globalmetadata from './globalmetadata';
+import * as metadatadataset from './metadatadataset';
+import * as metadatalock from './metadatalock';
+import * as metadatamigration from './metadatamigration';
+import * as metadataschema from './metadataschema';
+import * as project from './project';
+import * as sequence from './sequence';
+import * as subtitle from './subtitle';
+import * as thumbnail from './thumbnail';
+import * as timeline from './timeline';
+import * as vidinet from './vidinet';
 
 export {
   auditlog,
@@ -90,4 +105,19 @@ export {
   metadata,
   quota,
   transfer,
+  sequence,
+  component,
+  thumbnail,
+  timeline,
+  vidinet,
+  project,
+  subtitle,
+  metadataschema,
+  metadatamigration,
+  metadatadataset,
+  metadatalock,
+  globalmetadata,
+  bulkymetadata,
+  autoprojection,
+  deletionlock,
 };

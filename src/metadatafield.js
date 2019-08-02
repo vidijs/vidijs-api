@@ -1,4 +1,4 @@
-import { vFetch } from './utils';
+import { vFetch, isRequired } from './utils';
 import { getSimpleMetadata as getEntitySimpleMetadata } from './metadata';
 
 
@@ -67,6 +67,25 @@ export function getMetadataFieldValues({
   });
 }
 
+export function getMetadataFieldAllowedValues({
+  fieldName = isRequired(),
+  metadataFieldValueConstraintListDocument,
+  queryParams,
+  ...props
+}) {
+  const path = `/API/metadata-field/${fieldName}/allowed-values/`;
+  let method = 'GET';
+  if (metadataFieldValueConstraintListDocument) {
+    method = 'POST';
+  }
+  return vFetch({
+    path,
+    method,
+    queryParams,
+    ...props,
+  });
+}
+
 export function updateMetadataFieldValues({
   fieldName,
   simpleMetadataDocument,
@@ -90,6 +109,72 @@ export function getSimpleMetadata({
   return getEntitySimpleMetadata({
     entityType,
     entityId: fieldName,
+    ...props,
+  });
+}
+
+export function listMetadataFieldAccess({
+  fieldName = isRequired(),
+  ...props
+}) {
+  const path = `/API/metadata-field/${fieldName}/access`;
+  return vFetch({
+    path,
+    method: 'GET',
+    ...props,
+  });
+}
+
+export function createMetadataFieldAccess({
+  fieldName = isRequired(),
+  metadataFieldAccessControlDocument = isRequired(),
+  ...props
+}) {
+  const path = `/API/metadata-field/${fieldName}/access`;
+  return vFetch({
+    path,
+    method: 'POST',
+    body: metadataFieldAccessControlDocument,
+    ...props,
+  });
+}
+
+export function removeMetadataFieldAccess({
+  fieldName = isRequired(),
+  accessId = isRequired(),
+  ...props
+}) {
+  const path = `/API/metadata-field/${fieldName}/access/${accessId}`;
+  return vFetch({
+    path,
+    method: 'DELETE',
+    ...props,
+  });
+}
+
+export function listMetadataFieldMergedAccess({
+  queryParams,
+  ...props
+} = {}) {
+  const path = '/API/metadata-field/merged-access';
+  return vFetch({
+    path,
+    method: 'GET',
+    queryParams,
+    ...props,
+  });
+}
+
+export function getMetadataFieldMergedAccess({
+  fieldName = isRequired(),
+  queryParams,
+  ...props
+} = {}) {
+  const path = `/API/metadata-field/${fieldName}/merged-access`;
+  return vFetch({
+    path,
+    method: 'GET',
+    queryParams,
     ...props,
   });
 }

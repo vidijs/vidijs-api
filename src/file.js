@@ -1,4 +1,4 @@
-import { vFetch } from './utils';
+import { vFetch, isRequired } from './utils';
 
 export function listFile({
   storageId,
@@ -268,6 +268,20 @@ export function reindexFile({
   return vFetch({
     path,
     method: 'PUT',
+    ...props,
+  });
+}
+
+export function createFileTemporaryCredentials({
+  fileId = isRequired(),
+  queryParams,
+  ...props
+}) {
+  const path = `/API/storage/file/${fileId}/uri`;
+  return vFetch({
+    path,
+    method: 'POST',
+    queryParams,
     ...props,
   });
 }

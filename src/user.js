@@ -1,4 +1,4 @@
-import { vFetch } from './utils';
+import { vFetch, isRequired } from './utils';
 
 export function whoAmI({
   headers: propsHeaders = {},
@@ -64,6 +64,36 @@ export function getUser({
   const path = `/API/user/${userName}`;
   return vFetch({
     path,
+    ...props,
+  });
+}
+
+export function getUserGraph({
+  userName = isRequired(),
+  queryParams,
+  ...props
+}) {
+  const path = `/API/user/${userName}/graph`;
+  return vFetch({
+    path,
+    queryParams,
+    ...props,
+  });
+}
+
+export function updateUser({
+  userName = isRequired(),
+  userDocument = isRequired(),
+  queryParams,
+  ...props
+}) {
+  const path = `/API/user/${userName}`;
+  const body = JSON.stringify(userDocument);
+  return vFetch({
+    path,
+    method: 'PUT',
+    body,
+    queryParams,
     ...props,
   });
 }

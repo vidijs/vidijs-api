@@ -103,12 +103,16 @@ export function vFetch({
   headers: extraHeaders = {},
   queryParams = {},
   matrixParams = [],
+  costEstimate = false,
   ...props
 } = {}) {
   const params = setQueryParams(queryParams);
   const matrix = setMatrix(matrixParams);
   const headers = setDefaultHeaders(extraHeaders);
-  const url = `${path}${matrix}${params}`;
+  let url = `${path}${matrix}${params}`;
+  if (costEstimate) {
+    url = url.replace('/API/', '/API/cost/');
+  }
   const request = {
     method,
     url,

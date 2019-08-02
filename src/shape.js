@@ -459,3 +459,66 @@ export function removeShapeMime({
     ...props,
   });
 }
+
+export function getShapeFileNameRule({
+  itemId = isRequired(),
+  shapeId = isRequired(),
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/${shapeId}/filename`;
+  return vFetch({
+    path,
+    method: 'GET',
+    ...props,
+  });
+}
+
+export function createShapeFileNameRule({
+  itemId = isRequired(),
+  shapeId = isRequired(),
+  storageId = isRequired(),
+  queryParams = isRequired(),
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/${shapeId}/filename/${storageId}`;
+  return vFetch({
+    path,
+    method: 'PUT',
+    queryParams,
+    ...props,
+  });
+}
+
+export function removeShapeFileNameRule({
+  itemId = isRequired(),
+  shapeId = isRequired(),
+  storageId = isRequired(),
+  queryParams,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/${shapeId}/filename/${storageId}`;
+  return vFetch({
+    path,
+    method: 'DELETE',
+    queryParams,
+    ...props,
+  });
+}
+
+
+export function createShapeAnalyze({
+  itemId = isRequired(),
+  shapeId = isRequired(),
+  analyzeJobDocument,
+  queryParams,
+  ...props
+}) {
+  const path = `/API/item/${itemId}/shape/${shapeId}/analyze`;
+  return vFetch({
+    path,
+    method: 'POST',
+    body: analyzeJobDocument,
+    queryParams,
+    ...props,
+  });
+}

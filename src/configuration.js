@@ -1,4 +1,4 @@
-import { vFetch } from './utils';
+import { vFetch, isRequired } from './utils';
 
 export function getConfiguration({
   ...props
@@ -29,6 +29,20 @@ export function updatePropertiesConfiguration({
   return vFetch({
     path,
     method: 'PUT',
+    body,
+    ...props,
+  });
+}
+
+export function updateAllPropertiesConfiguration({
+  onfigurationPropertyListDocument = isRequired(),
+  ...props
+}) {
+  const body = JSON.stringify(onfigurationPropertyListDocument);
+  const path = '/API/configuration/properties/';
+  return vFetch({
+    path,
+    method: 'POST',
     body,
     ...props,
   });
@@ -280,6 +294,42 @@ export function updateCorsConfiguration({
     path,
     method: 'PUT',
     body,
+    ...props,
+  });
+}
+
+
+export function getAuthConfiguration({
+  ...props
+} = {}) {
+  const path = '/API/configuration/auth';
+  return vFetch({
+    path,
+    ...props,
+  });
+}
+
+export function updateAuthConfiguration({
+  oAuth2ConfigurationDocument = isRequired(),
+  ...props
+}) {
+  const body = JSON.stringify(oAuth2ConfigurationDocument);
+  const path = '/API/configuration/auth';
+  return vFetch({
+    path,
+    method: 'PUT',
+    body,
+    ...props,
+  });
+}
+
+export function removeAuthConfiguration({
+  ...props
+} = {}) {
+  const path = '/API/configuration/auth';
+  return vFetch({
+    path,
+    method: 'DELETE',
     ...props,
   });
 }

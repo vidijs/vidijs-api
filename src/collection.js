@@ -1,6 +1,13 @@
-import { vFetch } from './utils';
+import { vFetch, isRequired } from './utils';
 
 import * as metadataApi from './metadata';
+import {
+  listEntityMetadataLock,
+  createEntityMetadataLock,
+  getEntityMetadataLock,
+  updateEntityMetadataLock,
+  removeEntityMetadataLock,
+} from './metadatalock';
 
 export function listCollection({
   matrixParams = [],
@@ -289,6 +296,60 @@ export function updateFolderCollection({
     path,
     method: 'PUT',
     queryParams,
+    ...props,
+  });
+}
+
+export function listCollectionMetadataLock({
+  collectionId = isRequired(),
+  ...props
+}) {
+  return listEntityMetadataLock({
+    entity: 'collection',
+    entityId: collectionId,
+    ...props,
+  });
+}
+
+export function createCollectionMetadataLock({
+  collectionId = isRequired(),
+  ...props
+}) {
+  return createEntityMetadataLock({
+    entity: 'collection',
+    entityId: collectionId,
+    ...props,
+  });
+}
+
+export function getCollectionMetadataLock({
+  collectionId = isRequired(),
+  ...props
+}) {
+  return getEntityMetadataLock({
+    entity: 'collection',
+    entityId: collectionId,
+    ...props,
+  });
+}
+
+export function updateCollectionMetadataLock({
+  collectionId = isRequired(),
+  ...props
+}) {
+  return updateEntityMetadataLock({
+    entity: 'collection',
+    entityId: collectionId,
+    ...props,
+  });
+}
+export function removeCollectionMetadataLock({
+  collectionId = isRequired(),
+  ...props
+}) {
+  return removeEntityMetadataLock({
+    entity: 'collection',
+    entityId: collectionId,
     ...props,
   });
 }

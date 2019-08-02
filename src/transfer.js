@@ -38,3 +38,15 @@ export function updateTransferPriority({
     ...props,
   });
 }
+
+export function listTransferLog({
+  queryParams,
+  ...props
+}) {
+  const path = '/API/log/transfer-log/';
+  return vFetch({
+    path,
+    queryParams,
+    ...props,
+  });
+}
