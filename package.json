@@ -1,6 +1,6 @@
 {
   "name": "@vidijs/vidijs-api",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Vidispine API bindings",
   "author": "Alex Jennings",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "start": "rollup -c -w"
   },
   "peerDependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
