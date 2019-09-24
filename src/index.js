@@ -54,6 +54,7 @@ import * as metadatamigration from './metadatamigration';
 import * as metadataschema from './metadataschema';
 import * as project from './project';
 import * as sequence from './sequence';
+import * as scheduledrequest from './scheduledrequest';
 import * as subtitle from './subtitle';
 import * as thumbnail from './thumbnail';
 import * as timeline from './timeline';
@@ -120,4 +121,5 @@ export {
   bulkymetadata,
   autoprojection,
   deletionlock,
+  scheduledrequest,
 };
