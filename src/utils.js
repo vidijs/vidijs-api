@@ -55,13 +55,17 @@ function setQueryParams(queryParams) {
     if (typeof queryParams[currentKey] === 'undefined') {
       return accumulator;
     }
+    const currentValue = queryParams[currentKey];
     const separator = currentIndex > 0 ? '&' : '';
     if (KV_PARAMS.includes(currentKey)) {
       const kvReducer = (a, c, i) => `${a}${i > 0 ? '&' : ''}${currentKey}=${c.key}%3D${c.value}`;
-      const kvString = queryParams[currentKey].reduce(kvReducer, '');
+      const kvString = currentValue.reduce(kvReducer, '');
       return `${accumulator}${separator}${kvString}`;
     }
-    return `${accumulator}${separator}${currentKey}=${queryParams[currentKey]}`;
+    if (Array.isArray(currentValue)) {
+      return `${accumulator}${separator}${currentKey}=${currentValue.join(',')}`;
+    }
+    return `${accumulator}${separator}${currentKey}=${currentValue}`;
   };
   const paramStr = paramKeys.reduce(reducer, '?');
   return paramStr;
